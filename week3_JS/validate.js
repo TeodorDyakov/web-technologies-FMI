@@ -4,22 +4,26 @@ function validate() {
     var pass2 = document.getElementById('pass2').value;
 
     if (username.length < 3 || username.length > 10) {
-        console.log("length must be between 3-10 characters!");
+    	var err = document.getElementById("username_err");
+    	err.textContent = "pass must be between 3 and 10 characters";
         return false;
     }
 
     if (!isAlphaNumeric(username)) {
-        console.log("invalid username!");
+    	var err = document.getElementById("username_err");
+    	err.textContent = "username must contains only letters, numbers or _";
         return false;
     }
 
     if (pass1 != pass2) {
-        console.log("passwords dont match");
+    	var err = document.getElementById("pass_err2");
+    	err.textContent = "passwords dont match!";
         return false;
     }
 
     if (!(isValidPass(pass1))) {
-        console.log("invalid pass");
+    	var err = document.getElementById("pass_err1");
+    	err.textContent = "password must contain at least 1 lowercase, 1 uppercase letter and 1 nubmer";
         return false;
     }
     return true;
