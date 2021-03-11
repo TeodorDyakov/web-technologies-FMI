@@ -65,6 +65,6 @@ function isValidPass(str) {
             containsUppercase = true;
         }
     }
-    return containsLowercase && containsLowercase && containsNumber;
+    return containsLowercase && containsUppercase && containsNumber;
 }
 
