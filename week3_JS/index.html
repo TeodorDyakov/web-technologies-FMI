@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<h1 id="page-title">Selection</h1>
+	    <ul>
+		    <li class="food">Pizza</li>
+		    <li class="drink">Water</li>
+		    <li class="drink">Wine<li>
+		    <li class="food">Burger</li>
+	    </ul>
+	</body>
+
+		<script>
+		
+		var items = document.getElementsByTagName('li');     // HTMLCollection
+		var foods = document.getElementsByClassName('food'); // HTMLCollection
+
+		foods[0].textContent += ' Hut';         // Pizza Hut
+		title.innerHTML += ' <em>example</em>'; // Selection <em>example</em>
+		console.log(foods);         // Selection example
+		
+		// ES5 - use any CSS selector
+		var text = document.createTextNode('text node content');
+		var div = document.createElement('div');
+
+		// Add
+		div.appendChild(text);
+		document.body.appendChild(div);
+		
+		function validate(){
+			
+		}
+
+	</script>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<title></title>
+</head>
+	<body>
+		<div id = "container">
+			<form class = "form" action="action_page.php" onsubmit="return validate()" method="post">
+				<h1>
+					Register
+				</h1>
+				<div class = "box">
+					<input type="text" id = "username" placeholder = "username">
+				</div>
+				<div class = "box">
+					<input type="password" id = "pass1" placeholder = "password">
+				</div>
+				<div class = "box">
+					<input type="password"id = "pass2" placeholder = "repeat password">
+				</div>
+				<div class = "box">
+				    <input id = "register" type="submit" value="Регистрация">
+				</div>
+			</form>
+		</div>
+
+		<script src = "validate.js"></script>
+
+	</body>
+</html>
