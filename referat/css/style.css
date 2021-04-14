@@ -17,6 +17,10 @@ html {
     white-space: pre-wrap;
 }
 
+#content{
+	color:gray;
+}
+
 html{
 	line-height: 1.6;
 }
