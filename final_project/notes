@@ -1,0 +1,9 @@
+TODO(17.5.2021 23:20)
+
+1. get params from form submit and insert into db
+- check query method - should be POST
+- get params in php and create SQL script
+- show message succesfully added tag
+2.
+
+3. maybe add AJAX instead of page reload on form submit

@@ -38,6 +38,10 @@ html{
     display: none;
   } */
 
+  #imgId{
+    display: none;
+  }
+
   button {
     background-color: #4CAF50; /* Green */
     border: none;

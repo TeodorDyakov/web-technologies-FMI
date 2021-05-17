@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,11 +15,11 @@
                 <p>example label</p>
             </div>
         </div>
-        <form action="welcome.php" method="post">
+        <form action="labels_db.php" method="post">
             <input type="text" name="X" id="X">
             <input type="text" name="Y" id="Y">
             Label: <input type="text" name="label" id="label" value="example label"><br>
-            <input type="submit">
+            <button type="button" onclick="SaveLabel()">Add new label</button>
         </form>
     </div>
 </body>

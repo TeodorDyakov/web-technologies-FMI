@@ -4,4 +4,6 @@ CREATE TABLE `annotation_tool`.`label` ( `id` INT(11) NOT NULL AUTO_INCREMENT ,
  `text` VARCHAR(200) NOT NULL , `x` INT(4) NOT NULL ,
   `y` INT(4) NOT NULL , `imgid` CHAR(20) NOT NULL ,
    PRIMARY KEY (`id`), INDEX (`imgid`)) ENGINE = InnoDB;
-ALTER TABLE `label` ADD FOREIGN KEY (`imgid`) REFERENCES `image`(`imgId`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `label` DROP FOREIGN KEY `label_ibfk_1`; ALTER TABLE `label` 
+ADD CONSTRAINT `label_ibfk_1` FOREIGN KEY (`imgId`) REFERENCES `image`(`imgId`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+

@@ -15,12 +15,42 @@ function FindPosition(oElement)
     }
 }
 
+function SaveLabel() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const imgId = urlParams.get('imgId');
+  var url = "labels_db.php";
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        //add message to user that it was submitted succesfully          
+      }
+  };
+
+  xhttp.open("POST", url, true);
+
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  
+  var X = document.getElementById('X').value;
+  var Y = document.getElementById('Y').value;
+  var label = document.getElementById('label').value;
+
+  xhttp.send(JSON.stringify({
+      "imgId": imgId,
+      "X": X,
+      "Y": Y,
+      "label": label
+  }));
+}
+
 function ShowAllLabels()
 {
     const urlParams = new URLSearchParams(window.location.search);
+    const imgId = urlParams.get('imgId');
+    var url = "labels_db.php?imgId=" + imgId;
+
     var xmlhttp = new XMLHttpRequest();
-    var url = "labels_db.php";
-    
+    // alert(url);
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
