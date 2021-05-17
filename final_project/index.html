@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button onclick="ShowAllLabels()">Show all labels</button>
+    <div id = "container">
+        <?php
+ 
+	    echo "<img src="cat.jpg" alt="" id="myImgId" />"; 
+
+	    ?>  
+        
+        <div class="text-block" id="text">
+            <p>example label</p>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+<script type="text/javascript">
+    var myImg = document.getElementById("myImgId");
+    myImg.onmousedown = GetCoordinates;
+</script>
+<form action="welcome.php" method="post">
+    X: <input type="text" name="X" id="X"><br>
+    Y: <input type="text" name="Y" id="Y"><br>
+    Label: <input type="text" name="label" id="label" value = "example label"><br>
+    <input type="submit">
+</form>
+<div id = "hui"></div>
+</html>
