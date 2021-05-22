@@ -1,0 +1,48 @@
+html{
+	  font-family: Arial, Helvetica, sans-serif;
+}
+
+input, button{
+	width: 90%;
+	font-size: 100%;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	margin-left: 0;
+	margin-right: 0;
+	padding-top: 10px;
+	border: 1px grey;
+	padding-bottom: 10px;
+	border: 1px solid #ccc;
+}
+
+.error{
+	display: none;
+	color: brown;
+}
+
+.form{
+	background-color: #F5F5F5;
+	text-align: center;
+	width: 600px;
+	border: 2px solid grey;
+    margin: auto;
+}
+
+h1 {
+	padding:10px;
+	font-size: 20px;
+	background-color: #4CAF50; /* Green */
+	margin-top: 0;
+	margin-bottom: 10px;
+	margin-left: 0;
+	margin-right: 0;
+	color: white;
+}
+
+#register{
+	background-color: #4CAF50; /* Green */
+	border: none;
+    color: white;
+    border: none;
+    margin-bottom: 20px;
+}

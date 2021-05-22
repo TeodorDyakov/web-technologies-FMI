@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <title></title>
+  </head>
+
+  <body>
+    <div id="container">
+      <form
+        class="form"
+      >
+        <h1>Форма за Регистрация</h1>
+        
+        <div class="box">
+          <!-- <label for = "username">О</label> -->
+          <input type="text" id="username" placeholder="потребителско име" />
+          <p class = "error" id="username_err">Невалидно потребителско име</p>
+        </div>
+        
+        <div class="box">
+            <input type="text" id="name" placeholder="име" />
+            <p class = "error" id="name_err">Невалидно име</p>
+        </div>
+
+        <div class="box">
+            <input type="text" id="family-name" placeholder="фамилия" />
+            <p class = "error" id="family-name_err">Невалидна фамилия</p>
+        </div>
+
+        <div class="box">
+            <input type="text" id="email" placeholder="имейл адрес" />
+            <p class = "error" id="email_err">Невалиден имейл адрес</p>
+          </div>
+
+        <div class="box">
+          <input type="password" id="password" placeholder="парола" />
+          <p class = "error" id="password_err">Невалидна парола</p>
+        </div>
+
+        <p>Адрес</p>
+        <div class="box">
+            <input type="text" id="street" placeholder="улица" />
+            <p class = "error" id="street_err">Невалидна улица</p>
+        </div>
+
+        <div class="box">
+            <input type="text" id="city" placeholder="град" />
+            <p class = "error" id="city_err">Невалиден град</p>
+        </div>
+
+        <div class="box">
+            <input type="text" id="postal-code" placeholder="пощенски код" />
+            <p class = "error" id="postal-code_err">Невалиден пощенски код</p>
+        </div>
+
+        <div class="box">
+          <button id="register-btn" type="button" value="Регистрация" onclick="validate()">Регистрация</button>
+        </div>
+        
+        <p></p>
+
+      </form>
+    </div>
+    <script src="validate.js"></script>
+  </body>
+</html>
