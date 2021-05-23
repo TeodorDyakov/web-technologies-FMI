@@ -1,57 +1,89 @@
+var idToValidationFunc = {
+    "username": validateUsername,
+    "name": validateName,
+    "family-name": validateFamilyName,
+    "email": validateEmail,
+    "password": validatePassword,
+    "street": validateStreet,
+    "city": validateCity,
+    "postal-code": validatePostalCode,
+};
 
-function ajax() {
-    const url = "https://jsonplaceholder.typicode.com/users";
+var idToErrorMessage = {
+    "username": "Невалидно потребителско име",
+    "name": "Невалидно име",
+    "family-name": "Невалидно фамилно име",
+    "email": "Невалиден e-mail",
+    "password": "Невалидна парола",
+    "street": "Невалидна улица",
+    "city": "Невалиден град",
+    "postal-code": "Невалиден пощенски код",
+};
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("ajaxTest").innerHTML = this.responseText;
-        }
-    };
-    xhttp.open("POST", url, true);
-
-    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-    var username = document.getElementById('username').value;
-    var pass1 = document.getElementById('pass1').value;
-
-    xhttp.send(JSON.stringify({
-        "username": username,
-        "password": pass1
-    }));
+function insertParagraphAfter(id, text, element, className){
+    var parElement = document.createElement("p");
+    parElement.className = className;
+    var node = document.createTextNode(text);
+    parElement.appendChild(node);
+    parElement.id = id;
+    element.parentNode.insertBefore(parElement, element.nextSibling);
 }
 
-function validate() {
+function registerAJAX() {
+    
+    if(!validate()){
+        return;
+    }
 
-    var idToValidationFunc = {
-        "username": validateUsername,
-        "name": validateName,
-        "family-name": validateFamilyName,
-        "email": validateEmail,
-        "password": validatePassword,
-        "street": validateStreet,
-        "city": validateCity,
-        "postal-code": validatePostalCode,
+    const url = "https://jsonplaceholder.typicode.com/users";
+    var xmlhttp = new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var username = document.getElementById("username").value;
+            var jsonArr = JSON.parse(this.responseText);
+            if(jsonArr.some(item => item.username === username)){ 
+                insertParagraphAfter("username_taken_error", "Потребителското име е заето", document.getElementById("username"), "error");
+            }else{
+                insertParagraphAfter("success", "Регистрацията е успешна!", document.getElementById("postal-code"), "success");
+            }
+        }
     };
+
+    xmlhttp.open("GET", url, true);
+    // xmlhttp.setRequestHeader("Content-Type", "application/json");
+    // const registerInputJSON = getInputAsJSON();
+    xmlhttp.send();
+}
+
+
+function validate() {
+    username = document.getElementById("username");
 
     var allValid = true;
     for (let id in idToValidationFunc) {
         allValid &= validateInput(idToValidationFunc[id], id);
     }
-    if (allValid) {
-        //success
-        //make AJAX
+    return allValid;
+}
+
+function getInputAsJSON(){
+    var input = {};
+    for (let id in idToValidationFunc) {
+        input[id] = document.getElementById(id).value;
     }
+    var res = JSON.stringify(input);
+    console.log(res);
+    return res;
 }
 
 function validateInput(validationFunc, elementId) {
     var element = document.getElementById(elementId);
-    var errElement = document.getElementById(elementId + "_err");
+
     if (!validationFunc(element.value)) {
-        errElement.style.display = "block";
+        insertParagraphAfter(elementId + "_error", idToErrorMessage[elementId], element, "error");
         return false;
     } else {
-        errElement.style.display = "none";
         return true;
     }
 }
@@ -90,7 +122,10 @@ function validateCity(str) {
 }
 
 function validatePostalCode(str) {
-    const re = /^[0-9]{5}(-[0-9]{4})?$/;
+    if(!str){
+        return true;
+    }
+    const re = /^([0-9]{5}-)?[0-9]{4}$/;
     return re.test(str);
 }
 
