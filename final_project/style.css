@@ -21,25 +21,14 @@ html{
     padding: 20px;
   }
 
-  #imgToLabel{
-    size: 100%;
-  }
-
   #main{
     width: 60%;
     margin: auto;
   }
 
-  /* #X{
-    display: none;
-  }
-
-  #Y{
-    display: none;
-  } */
-
-  #imgId{
-    display: none;
+  img{
+    width:100%;
+    max-width:1200px;
   }
 
   button {

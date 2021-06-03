@@ -23,7 +23,11 @@ function SaveLabel() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        //add message to user that it was submitted succesfully          
+        document.getElementById("message").innerHTML="Анотацията е запазена!";
+        document.getElementById("message").style.display = "block";
+        setTimeout(function() {
+          document.getElementById("message").style.display = "none";
+      }, 2000); // <-- time in millisecond
       }
   };
 
@@ -43,18 +47,45 @@ function SaveLabel() {
   }));
 }
 
+var ShowLabels = true;
+
+function HideLabels()
+{
+  var labels = document.getElementsByClassName("text-block");
+  for(const label of labels){
+    label.style.display = "none";
+  }
+}
+
+function ButtonClick()
+{
+  var btn = document.getElementById("show_btn");
+  console.log(btn);
+  if(ShowLabels){
+    ShowAllLabels();
+    btn.innerHTML = "Hide labels";
+    btn.style.backgroundColor = "red";
+  }else{
+    HideLabels();
+    btn.innerHTML = "Show labels";
+    btn.style.backgroundColor = "green";
+  }
+  ShowLabels = !ShowLabels;
+}
+
 function ShowAllLabels()
 {
     const urlParams = new URLSearchParams(window.location.search);
     const imgId = urlParams.get('imgId');
     var url = "labels_db.php?imgId=" + imgId;
-
+    
     var xmlhttp = new XMLHttpRequest();
     // alert(url);
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var myArr = JSON.parse(this.responseText);
             showLabels(myArr);
+            document.getElementById("text").style.display = "block";
         }
     };
 
@@ -63,11 +94,10 @@ function ShowAllLabels()
     
     function showLabels(arr) {
       for (const label of arr) {
-        console.log(label);
         
         var element = document.createElement("div");
         var paragraph = document.createElement("p");
-        
+
         paragraph.innerHTML = label["text"];
         
         element.appendChild(paragraph);
@@ -78,6 +108,7 @@ function ShowAllLabels()
 
         element.style.left = parseInt(label["x"]) + parseInt(ImgPos[0]);
         element.style.top = parseInt(label["y"])  + parseInt(ImgPos[1]);
+        element.style.display = "block";
       }
     }
 }

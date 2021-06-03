@@ -1,0 +1,16 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <img src = "cube.jpg">
+    </body>
+    <script>
+        var annotation_tool_link = "localhost/fmi/index.php";
+        var images = document.getElementsByTagName('img');
+        var srcList = [];
+        for(var i = 0; i < images.length; i++) {
+            srcList.push(images[i].src);
+            console.log(annotation_tool_link + "?imgId=" + srcList[0]);
+        }
+    </script>
+</html>
